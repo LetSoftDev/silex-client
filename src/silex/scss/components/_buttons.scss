@@ -16,7 +16,7 @@
 	transition: all 0.2s;
 	white-space: nowrap;
 
-	.silex-icon {
+	.material-icons {
 		margin-right: vars.$spacing-xs;
 		font-size: 18px;
 	}
@@ -83,21 +83,29 @@
 }
 
 .silex-action-btn {
-	width: 32px;
-	height: 32px;
-	border: none;
+	width: 28px;
+	height: 28px;
 	border-radius: vars.$border-radius-circle;
-	background: none;
-	color: vars.$drive-text-secondary;
-	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: all 0.2s;
+	background-color: white;
+	border: 1px solid vars.$drive-border;
+	cursor: pointer;
+	transition: all 0.15s ease;
+
+	.material-icons {
+		font-size: 16px;
+		color: vars.$drive-text-secondary;
+	}
 
 	&:hover {
 		background-color: vars.$drive-item-hover;
-		color: vars.$drive-text-primary;
+		transform: scale(1.1);
+
+		.material-icons {
+			color: vars.$drive-text-primary;
+		}
 	}
 }
 

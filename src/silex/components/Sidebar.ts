@@ -29,32 +29,32 @@ export class Sidebar {
 	private renderSidebar(): void {
 		this.sidebarElement.innerHTML = `
       <div class="silex-sidebar-item active" data-path="/">
-        <span class="material-icons silex-icon">home</span>
+        <i class="material-icons">home</i>
         Все файлы
       </div>
       
       <div class="silex-sidebar-item" data-path="/images">
-        <span class="material-icons silex-icon">image</span>
+        <i class="material-icons">image</i>
         Изображения
       </div>
       
       <div class="silex-sidebar-item" data-path="/documents">
-        <span class="material-icons silex-icon">description</span>
+        <i class="material-icons">description</i>
         Документы
       </div>
       
       <div class="silex-sidebar-item" data-path="/videos">
-        <span class="material-icons silex-icon">videocam</span>
+        <i class="material-icons">videocam</i>
         Видео
       </div>
       
       <div class="silex-sidebar-item" data-path="/audio">
-        <span class="material-icons silex-icon">audiotrack</span>
+        <i class="material-icons">audiotrack</i>
         Аудио
       </div>
       
       <div class="silex-sidebar-item" data-path="/trash">
-        <span class="material-icons silex-icon">delete</span>
+        <i class="material-icons">delete</i>
         Корзина
       </div>
     `

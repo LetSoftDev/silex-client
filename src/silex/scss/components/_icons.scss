@@ -1,0 +1,59 @@
+@use '../variables' as vars;
+
+// Стили для Material Icons
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+// Стили для иконок в компонентах
+.silex-icon {
+	color: vars.$drive-text-secondary;
+
+	&.folder {
+		color: vars.$drive-yellow;
+	}
+
+	&.image {
+		color: vars.$drive-blue;
+	}
+
+	&.document,
+	&.description {
+		color: vars.$drive-blue;
+	}
+
+	&.videocam {
+		color: vars.$drive-red;
+	}
+
+	&.audiotrack {
+		color: vars.$drive-green;
+	}
+
+	&.archive {
+		color: vars.$drive-text-secondary;
+	}
+
+	&.insert_drive_file {
+		color: vars.$drive-text-secondary;
+	}
+}

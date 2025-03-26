@@ -1,33 +1,57 @@
 import { EventEmitter } from '../utils/EventEmitter'
 
 /**
+ * Опции для модального окна
+ */
+export interface ModalOptions {
+	/**
+	 * Закрывать модальное окно при клике на оверлей
+	 */
+	closeOnOverlayClick?: boolean
+
+	/**
+	 * Ширина модального окна
+	 */
+	width?: string
+
+	/**
+	 * Высота модального окна
+	 */
+	height?: string
+}
+
+/**
  * Компонент модального окна файлового менеджера
  */
 export class Modal {
-	private element: HTMLElement
-	private contentElement: HTMLElement
+	private modalElement: HTMLElement
 	private bodyElement: HTMLElement
 	private closeButton: HTMLElement
 	private cancelButton: HTMLElement
 	private confirmButton: HTMLButtonElement
 	private events: EventEmitter = new EventEmitter()
 	private documentKeyHandler: (e: KeyboardEvent) => void
+	private options: ModalOptions = {
+		closeOnOverlayClick: true,
+	}
 
 	/**
 	 * Создает модальное окно
-	 * @param width ширина модального окна
-	 * @param height высота модального окна
 	 */
-	constructor(width: string = '1000px', height: string = '600px') {
-		this.element = document.createElement('div')
-		this.element.className = 'silex-modal'
+	constructor(options?: Partial<ModalOptions>) {
+		// Объединяем переданные опции с опциями по умолчанию
+		this.options = { ...this.options, ...options }
 
-		this.element.innerHTML = `
-      <div class="silex-modal-content" style="width: ${width}; height: ${height};">
+		// Создаем DOM структуру
+		this.modalElement = document.createElement('div')
+		this.modalElement.className = 'silex-modal'
+
+		this.modalElement.innerHTML = `
+      <div class="silex-modal-content" style="width: ${this.options.width}; height: ${this.options.height};">
         <div class="silex-modal-header">
           <div class="silex-modal-title">Файловый менеджер</div>
           <button class="silex-modal-close">
-            <span class="material-icons silex-icon">close</span>
+            <i class="material-icons">close</i>
           </button>
         </div>
         <div class="silex-modal-body"></div>
@@ -38,19 +62,16 @@ export class Modal {
       </div>
     `
 
-		this.contentElement = this.element.querySelector(
-			'.silex-modal-content'
-		) as HTMLElement
-		this.bodyElement = this.element.querySelector(
+		this.bodyElement = this.modalElement.querySelector(
 			'.silex-modal-body'
 		) as HTMLElement
-		this.closeButton = this.element.querySelector(
+		this.closeButton = this.modalElement.querySelector(
 			'.silex-modal-close'
 		) as HTMLElement
-		this.cancelButton = this.element.querySelector(
+		this.cancelButton = this.modalElement.querySelector(
 			'.silex-cancel-btn'
 		) as HTMLElement
-		this.confirmButton = this.element.querySelector(
+		this.confirmButton = this.modalElement.querySelector(
 			'.silex-select-btn'
 		) as HTMLButtonElement
 
@@ -66,7 +87,7 @@ export class Modal {
 		this.setupEventListeners()
 
 		// Добавляем модальное окно в DOM сразу при создании
-		document.body.appendChild(this.element)
+		document.body.appendChild(this.modalElement)
 	}
 
 	/**
@@ -98,8 +119,8 @@ export class Modal {
 		})
 
 		// Закрытие по клику на фон
-		this.element.addEventListener('click', e => {
-			if (e.target === this.element) {
+		this.modalElement.addEventListener('click', e => {
+			if (e.target === this.modalElement) {
 				this.events.emit('cancel')
 				this.hide()
 			}
@@ -110,7 +131,7 @@ export class Modal {
 	 * Возвращает DOM элемент модального окна
 	 */
 	public getElement(): HTMLElement {
-		return this.element
+		return this.modalElement
 	}
 
 	/**
@@ -132,7 +153,7 @@ export class Modal {
 	 */
 	public show(): void {
 		setTimeout(() => {
-			this.element.classList.add('visible')
+			this.modalElement.classList.add('visible')
 
 			// Добавляем обработчик клавиатуры при показе модального окна
 			document.addEventListener('keydown', this.documentKeyHandler)
@@ -143,14 +164,14 @@ export class Modal {
 	 * Скрывает модальное окно
 	 */
 	public hide(): void {
-		this.element.classList.remove('visible')
+		this.modalElement.classList.remove('visible')
 
 		// Удаляем обработчик клавиатуры при скрытии модального окна
 		document.removeEventListener('keydown', this.documentKeyHandler)
 
 		setTimeout(() => {
-			if (this.element.parentNode) {
-				document.body.removeChild(this.element)
+			if (this.modalElement.parentNode) {
+				document.body.removeChild(this.modalElement)
 			}
 		}, 200)
 	}

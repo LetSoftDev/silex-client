@@ -1,14 +1,14 @@
 @use '../variables' as vars;
 
 .silex-files {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 16px;
 	padding: 24px;
 	transition: opacity 0.3s ease;
 
 	&.list-view {
-		grid-template-columns: 1fr;
+		flex-direction: column;
 	}
 
 	&.loading {
@@ -26,6 +26,19 @@
 	overflow: hidden;
 	cursor: pointer;
 	transition: all 0.2s;
+	width: calc(25% - 16px); // 4 элемента в ряд с учетом gap
+
+	@media (max-width: vars.$breakpoint-lg) {
+		width: calc(33.33% - 16px); // 3 элемента в ряд
+	}
+
+	@media (max-width: vars.$breakpoint-md) {
+		width: calc(50% - 16px); // 2 элемента в ряд
+	}
+
+	@media (max-width: vars.$breakpoint-sm) {
+		width: 100%; // 1 элемент в ряд
+	}
 
 	&:hover {
 		box-shadow: vars.$drive-shadow;
@@ -38,6 +51,22 @@
 	&.selected {
 		background-color: vars.$drive-item-selected;
 		border-color: vars.$drive-blue;
+	}
+}
+
+.silex-files.list-view .silex-file-item {
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+
+	.silex-file-preview {
+		width: 60px;
+		height: 60px;
+		margin-right: vars.$spacing-md;
+	}
+
+	.silex-file-info {
+		flex: 1;
 	}
 }
 
@@ -98,7 +127,7 @@
 }
 
 .silex-empty-message {
-	grid-column: 1 / -1;
+	width: 100%;
 	text-align: center;
 	padding: vars.$spacing-xl;
 	color: vars.$drive-text-secondary;

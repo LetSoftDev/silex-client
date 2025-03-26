@@ -1,0 +1,93 @@
+@use '../variables' as vars;
+
+.silex-icon-file {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 8px;
+	margin-right: vars.$spacing-sm;
+	background-color: #f0f4f9;
+	color: vars.$drive-text-secondary;
+	font-size: 20px;
+
+	&.folder {
+		background-color: #fef7e0;
+		color: #fbc02d;
+	}
+
+	&.image {
+		background-color: #e3f2fd;
+		color: #2196f3;
+	}
+
+	&.video {
+		background-color: #e8f5e9;
+		color: #4caf50;
+	}
+
+	&.audio {
+		background-color: #fff3e0;
+		color: #ff9800;
+	}
+
+	&.pdf {
+		background-color: #ffebee;
+		color: #f44336;
+	}
+
+	&.doc,
+	&.docx {
+		background-color: #e8f0fe;
+		color: #4285f4;
+	}
+
+	&.xls,
+	&.xlsx {
+		background-color: #e8f5e9;
+		color: #0f9d58;
+	}
+
+	&.ppt,
+	&.pptx {
+		background-color: #fbe9e7;
+		color: #ff5722;
+	}
+
+	&.zip,
+	&.rar,
+	&.tar,
+	&.gz {
+		background-color: #efebe9;
+		color: #795548;
+	}
+
+	&.html,
+	&.htm {
+		background-color: #e1f5fe;
+		color: #03a9f4;
+	}
+
+	&.css {
+		background-color: #e3f2fd;
+		color: #2196f3;
+	}
+
+	&.js,
+	&.ts {
+		background-color: #fff8e1;
+		color: #ffc107;
+	}
+
+	&.json {
+		background-color: #f3e5f5;
+		color: #9c27b0;
+	}
+
+	&.txt {
+		background-color: #f5f5f5;
+		color: #616161;
+	}
+}

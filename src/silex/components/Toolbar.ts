@@ -35,32 +35,32 @@ export class Toolbar {
 	private renderToolbar(): void {
 		this.toolbarElement.innerHTML = `
       <div class="silex-logo">
-        <span class="material-icons silex-icon">folder</span>
+        <i class="material-icons">folder</i>
         Файловый менеджер
       </div>
       
       <div class="silex-search-container">
-        <span class="material-icons silex-icon">search</span>
+        <i class="material-icons silex-search-icon">search</i>
         <input type="text" class="silex-search" placeholder="Поиск файлов...">
       </div>
       
       <div class="silex-actions">
         <button class="silex-btn silex-btn-upload">
-          <span class="material-icons silex-icon">upload</span>
+          <i class="material-icons">upload</i>
           Загрузить
         </button>
         
         <button class="silex-btn silex-btn-primary silex-btn-create">
-          <span class="material-icons silex-icon">create_new_folder</span>
+          <i class="material-icons">create_new_folder</i>
           Создать папку
         </button>
         
         <div class="silex-view-toggle">
           <button class="silex-view-btn active" data-view="grid">
-            <span class="material-icons silex-icon">grid_view</span>
+            <i class="material-icons">grid_view</i>
           </button>
           <button class="silex-view-btn" data-view="list">
-            <span class="material-icons silex-icon">view_list</span>
+            <i class="material-icons">view_list</i>
           </button>
         </div>
       </div>

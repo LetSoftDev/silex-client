@@ -23,7 +23,6 @@ export class FileList {
 	private events: EventEmitter = new EventEmitter()
 	private maxFiles: number = 1
 	private allowedTypes: string[] | undefined = undefined
-	private viewMode: 'grid' | 'list' = 'grid'
 	private sortType: SortType = 'name'
 	private sortDirection: SortDirection = 'asc'
 	private sortOrderElement: HTMLElement | null = null
@@ -240,7 +239,6 @@ export class FileList {
 	 * @param mode режим отображения (grid или list)
 	 */
 	public setViewMode(mode: 'grid' | 'list'): void {
-		this.viewMode = mode
 		this.fileListElement.classList.toggle('list-view', mode === 'list')
 		this.render()
 	}
@@ -310,12 +308,14 @@ export class FileList {
 		filePreviewElement.className = 'silex-file-preview'
 
 		// Отображаем иконку в зависимости от типа файла
-		const fileIcon = this.getFileTypeIcon(file)
+		const fileIconClass = this.getFileTypeIconClass(file)
 
 		if (file.type === 'image' && file.thumbnailUrl) {
 			filePreviewElement.innerHTML = `<img src="${file.thumbnailUrl}" alt="${file.name}">`
 		} else {
-			filePreviewElement.innerHTML = `<span class="material-icons silex-icon">${fileIcon}</span>`
+			filePreviewElement.innerHTML = `<div class="silex-icon-file ${fileIconClass}">
+				<i class="material-icons">${this.getFileTypeIcon(file)}</i>
+			</div>`
 		}
 
 		// Информация о файле
@@ -350,7 +350,7 @@ export class FileList {
 		this.addFileActions(fileElement, file)
 
 		// Обработчик клика по файлу
-		fileElement.addEventListener('click', e => {
+		fileElement.addEventListener('click', () => {
 			// Если это директория, открываем ее
 			if (file.isDirectory) {
 				this.events.emit('openDirectory', file)
@@ -377,11 +377,11 @@ export class FileList {
 		actionsElement.innerHTML = `
 			${
 				file.isDirectory
-					? '<button class="silex-action-btn silex-open-btn"><span class="material-icons silex-icon">folder_open</span></button>'
-					: '<button class="silex-action-btn silex-preview-btn"><span class="material-icons silex-icon">visibility</span></button>'
+					? '<button class="silex-action-btn silex-open-btn"><i class="material-icons">folder_open</i></button>'
+					: '<button class="silex-action-btn silex-preview-btn"><i class="material-icons">visibility</i></button>'
 			}
-			<button class="silex-action-btn silex-rename-btn"><span class="material-icons silex-icon">edit</span></button>
-			<button class="silex-action-btn silex-delete-btn"><span class="material-icons silex-icon">delete</span></button>
+			<button class="silex-action-btn silex-rename-btn"><i class="material-icons">edit</i></button>
+			<button class="silex-action-btn silex-delete-btn"><i class="material-icons">delete</i></button>
 		`
 
 		fileElement.appendChild(actionsElement)
@@ -419,6 +419,58 @@ export class FileList {
 					this.events.emit('delete', file)
 				}
 			})
+		}
+	}
+
+	/**
+	 * Определяет класс для иконки типа файла
+	 * @param file информация о файле
+	 */
+	private getFileTypeIconClass(file: FileItem): string {
+		if (file.isDirectory) {
+			return 'folder'
+		}
+
+		// Convert file.type to string for comparison
+		const fileType = String(file.type || '')
+
+		switch (fileType) {
+			case 'image':
+				return 'image'
+			case 'video':
+				return 'video'
+			case 'audio':
+				return 'audio'
+			case 'pdf':
+				return 'pdf'
+			case 'doc':
+			case 'docx':
+				return 'doc'
+			case 'xls':
+			case 'xlsx':
+				return 'xls'
+			case 'ppt':
+			case 'pptx':
+				return 'ppt'
+			case 'zip':
+			case 'rar':
+			case 'tar':
+			case 'gz':
+				return 'zip'
+			case 'html':
+			case 'htm':
+				return 'html'
+			case 'css':
+				return 'css'
+			case 'js':
+			case 'ts':
+				return 'js'
+			case 'json':
+				return 'json'
+			case 'txt':
+				return 'txt'
+			default:
+				return ''
 		}
 	}
 

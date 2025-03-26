@@ -106,7 +106,7 @@ export class Silex {
 				<div class="silex-modal-header">
 					<div class="silex-modal-title">Файловый менеджер</div>
 					<button class="silex-modal-close">
-						<span class="material-icons silex-icon">close</span>
+						<span class="material-icons silex-icon close">close</span>
 					</button>
 				</div>
 				<div class="silex-modal-body"></div>

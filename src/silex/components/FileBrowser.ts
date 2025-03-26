@@ -31,13 +31,13 @@ export class FileBrowser {
 	 */
 	constructor(container: HTMLElement, initialPath: string = '/') {
 		this.container = container
-		
+
 		// Создаем систему событий
 		this.events = new EventEmitter()
-		
+
 		// Инициализируем службы
 		this.fileSystemService = new FileSystemService()
-		
+
 		// Инициализируем UI
 		this.currentPath = initialPath
 
@@ -547,54 +547,5 @@ export class FileBrowser {
 	 */
 	public setOnSelectionChange(callback: (files: FileItem[]) => void): void {
 		this.events.on('selectionChange', callback)
-	}
-
-	/**
-	 * Инициализирует контейнер браузера файлов
-	 */
-	private initContainer(): void {
-		// Применяем базовый класс к контейнеру
-		this.container.classList.add('silex-container')
-
-		// Создаем структуру UI
-		this.container.innerHTML = `
-			<!-- Header с поиском и действиями будет добавлен через Toolbar -->
-			
-			<div class="silex-content">
-				<!-- Sidebar будет добавлен через Sidebar -->
-				<!-- Files будут добавлены через FileList -->
-			</div>
-			
-			<div class="silex-loading">
-				<div class="silex-loading-spinner"></div>
-				<div class="silex-loading-text">Загрузка...</div>
-			</div>
-			
-			<div class="silex-footer">
-				<span class="silex-footer-path">Путь: /</span>
-				<div class="silex-disk-space">
-					<div class="silex-disk-space-bar">
-						<div class="silex-disk-space-used" style="width: 0%"></div>
-					</div>
-					<div class="silex-disk-space-info">
-						Загрузка информации о диске...
-					</div>
-				</div>
-			</div>
-		`
-
-		// Находим элементы для дальнейшего использования
-		this.contentContainer = this.container.querySelector(
-			'.silex-content'
-		) as HTMLElement
-		this.loadingElement = this.container.querySelector(
-			'.silex-loading'
-		) as HTMLElement
-		this.footerElement = this.container.querySelector(
-			'.silex-footer'
-		) as HTMLElement
-
-		// Загружаем информацию о дисковом пространстве
-		this.loadDiskSpaceInfo()
 	}
 }
