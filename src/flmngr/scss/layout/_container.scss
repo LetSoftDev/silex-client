@@ -1,0 +1,41 @@
+@use '../variables' as vars;
+
+.flmngr-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 400px;
+	background-color: vars.$drive-bg-primary;
+	font-family: vars.$drive-font-family;
+	color: vars.$drive-text-primary;
+}
+
+.flmngr-content {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+.flmngr-files-container {
+	flex: 1;
+	overflow-y: auto;
+	padding: vars.$spacing-lg;
+}
+
+.flmngr-footer {
+	display: flex;
+	justify-content: space-between;
+	padding: vars.$spacing-sm vars.$spacing-lg;
+	background-color: vars.$bg-color;
+	border-top: 1px solid vars.$border-color;
+	font-size: vars.$font-size-sm;
+	color: vars.$drive-text-secondary;
+}
+
+.flmngr-section-header {
+	font-size: vars.$font-size-md;
+	font-weight: vars.$font-weight-medium;
+	color: vars.$drive-text-primary;
+	margin-bottom: vars.$spacing-lg;
+}

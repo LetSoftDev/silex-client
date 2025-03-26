@@ -1,0 +1,8 @@
+.dist
+.vscode
+.cursorignore
+.gitignore
+.node_modules
+.idea
+.storage
+.next

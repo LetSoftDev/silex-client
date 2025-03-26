@@ -1,0 +1,29 @@
+@use '../variables' as vars;
+
+.flmngr-sidebar {
+	width: 256px;
+	padding: vars.$spacing-md 0;
+	background-color: vars.$drive-bg-primary;
+	border-right: 1px solid vars.$drive-border;
+
+	&-item {
+		display: flex;
+		align-items: center;
+		gap: vars.$spacing-md;
+		padding: vars.$spacing-sm vars.$spacing-xl;
+		color: vars.$drive-text-primary;
+		font-size: vars.$font-size-md;
+		cursor: pointer;
+		border-radius: 0 24px 24px 0;
+		margin-right: vars.$spacing-md;
+
+		&:hover {
+			background-color: vars.$drive-item-hover;
+		}
+
+		&.active {
+			background-color: vars.$drive-sidebar-active;
+			color: vars.$drive-sidebar-text-active;
+		}
+	}
+}

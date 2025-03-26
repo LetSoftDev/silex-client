@@ -1,0 +1,28 @@
+// Импорт иконок
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// Базовый сброс
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+button {
+	cursor: pointer;
+	background: none;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+}

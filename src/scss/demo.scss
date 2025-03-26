@@ -1,0 +1,130 @@
+@use './variables/demo' as demo;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-color: demo.$demo-background-color;
+	color: demo.$demo-text-color;
+	line-height: 1.6;
+}
+
+.demo {
+	&-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	&-section {
+		background-color: demo.$demo-card-background;
+		border-radius: 8px;
+		box-shadow: demo.$demo-shadow;
+		padding: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	&-button {
+		background-color: demo.$demo-primary-color;
+		color: white;
+		font-weight: 500;
+		border: none;
+		border-radius: 6px;
+		padding: 0.75rem 1.5rem;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: demo.$demo-hover-color;
+		}
+	}
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: 800;
+	text-align: center;
+	margin-bottom: 2rem;
+	color: demo.$demo-primary-color;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	color: demo.$demo-text-color;
+}
+
+p {
+	margin-bottom: 1rem;
+	color: #666;
+}
+
+.embedded-container {
+	border: 1px solid demo.$demo-border-color;
+	border-radius: 6px;
+	height: 500px;
+	margin-top: 1rem;
+	overflow: hidden;
+}
+
+.selected-files {
+	min-height: 50px;
+	padding: 1rem;
+}
+
+.files-list {
+	list-style: none;
+	margin-top: 1rem;
+}
+
+.file {
+	&-item {
+		display: flex;
+		align-items: center;
+		padding: 0.75rem;
+		border: 1px solid demo.$demo-border-color;
+		border-radius: 6px;
+		margin-bottom: 0.75rem;
+		background-color: #f9f9f9;
+	}
+
+	&-preview {
+		width: 60px;
+		height: 60px;
+		object-fit: cover;
+		border-radius: 4px;
+		margin-right: 1rem;
+	}
+
+	&-info {
+		flex: 1;
+	}
+
+	&-name {
+		font-weight: 500;
+		font-size: 1rem;
+		margin-bottom: 0.25rem;
+	}
+
+	&-meta {
+		display: flex;
+		font-size: 0.875rem;
+		color: #666;
+	}
+
+	&-type {
+		background-color: demo.$demo-primary-color;
+		color: white;
+		padding: 0.1rem 0.5rem;
+		border-radius: 3px;
+		margin-right: 0.75rem;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+	}
+}
