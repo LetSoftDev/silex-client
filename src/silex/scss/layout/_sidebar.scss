@@ -1,0 +1,39 @@
+@use '../variables' as vars;
+
+.silex-sidebar {
+	width: 220px;
+	flex-shrink: 0;
+	background-color: vars.$drive-bg-secondary;
+	border-right: 1px solid vars.$drive-border;
+	overflow-y: auto;
+	padding: vars.$spacing-lg 0;
+
+	&-item {
+		display: flex;
+		align-items: center;
+		padding: vars.$spacing-md vars.$spacing-lg;
+		color: vars.$drive-text-primary;
+		cursor: pointer;
+		transition: background-color 0.2s;
+		font-size: vars.$font-size-sm;
+
+		.silex-icon {
+			margin-right: vars.$spacing-md;
+			font-size: 20px;
+			color: vars.$drive-text-secondary;
+		}
+
+		&:hover {
+			background-color: vars.$drive-item-hover;
+		}
+
+		&.active {
+			background-color: vars.$drive-item-selected;
+			font-weight: vars.$font-weight-medium;
+
+			.silex-icon {
+				color: vars.$drive-blue;
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+@use '../variables' as vars;
+
+.silex-form-group {
+	margin-bottom: vars.$spacing-md;
+	display: flex;
+	flex-direction: column;
+}
+
+.silex-input {
+	padding: vars.$spacing-sm vars.$spacing-md;
+	border: 1px solid vars.$drive-border;
+	border-radius: vars.$border-radius-sm;
+	background-color: vars.$drive-bg-primary;
+	font-family: vars.$drive-font;
+	font-size: vars.$font-size-sm;
+	color: vars.$drive-text-primary;
+
+	&:focus {
+		outline: none;
+		border-color: vars.$drive-blue;
+		box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+	}
+}

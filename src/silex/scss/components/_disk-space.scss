@@ -1,0 +1,34 @@
+@use '../variables' as vars;
+
+.silex-disk-space {
+	display: flex;
+	flex-direction: column;
+	gap: vars.$spacing-xs;
+	width: 300px;
+
+	&-bar {
+		height: 6px;
+		background-color: vars.$drive-bg-secondary;
+		border-radius: 10px;
+		overflow: hidden;
+	}
+
+	&-used {
+		height: 100%;
+		background-color: vars.$drive-green;
+		transition: width 0.3s ease;
+		border-radius: 10px;
+	}
+
+	&-info {
+		font-size: vars.$font-size-xs;
+		color: vars.$drive-text-secondary;
+		display: flex;
+		justify-content: space-between;
+
+		strong {
+			font-weight: vars.$font-weight-medium;
+			color: vars.$drive-text-primary;
+		}
+	}
+}

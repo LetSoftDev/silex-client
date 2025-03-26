@@ -1,0 +1,106 @@
+@use '../variables' as vars;
+
+.silex-files {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 16px;
+	padding: 24px;
+	transition: opacity 0.3s ease;
+
+	&.list-view {
+		grid-template-columns: 1fr;
+	}
+
+	&.loading {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.silex-file-item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid vars.$drive-border;
+	border-radius: vars.$drive-radius;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.2s;
+
+	&:hover {
+		box-shadow: vars.$drive-shadow;
+
+		.silex-file-actions {
+			display: flex;
+		}
+	}
+
+	&.selected {
+		background-color: vars.$drive-item-selected;
+		border-color: vars.$drive-blue;
+	}
+}
+
+.silex-file-preview {
+	aspect-ratio: 16/9;
+	background-color: vars.$drive-bg-secondary;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.silex-icon {
+		font-size: 48px;
+		color: vars.$drive-text-secondary;
+	}
+}
+
+.silex-file-info {
+	padding: vars.$spacing-md;
+}
+
+.silex-file-name {
+	font-size: vars.$font-size-sm;
+	font-weight: vars.$font-weight-medium;
+	color: vars.$drive-text-primary;
+	margin-bottom: vars.$spacing-xs;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.silex-file-meta {
+	font-size: vars.$font-size-xs;
+	color: vars.$drive-text-secondary;
+
+	.silex-file-type,
+	.silex-file-size,
+	.silex-file-date {
+		margin-right: vars.$spacing-xs;
+	}
+}
+
+.silex-file-actions {
+	position: absolute;
+	top: vars.$spacing-sm;
+	right: vars.$spacing-sm;
+	display: none;
+	gap: vars.$spacing-xs;
+	background-color: white;
+	padding: vars.$spacing-xs;
+	border-radius: vars.$border-radius-lg;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.silex-empty-message {
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: vars.$spacing-xl;
+	color: vars.$drive-text-secondary;
+	font-size: vars.$font-size-md;
+}

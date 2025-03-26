@@ -1,0 +1,28 @@
+@use '../variables' as vars;
+
+@media (max-width: vars.$breakpoint-md) {
+	.silex-sidebar {
+		display: none;
+	}
+
+	.silex-files {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+
+	.silex-search-container {
+		max-width: none;
+	}
+
+	.silex-sort-container {
+		flex-wrap: wrap;
+
+		.silex-folders-first {
+			margin-top: vars.$spacing-sm;
+			width: 100%;
+		}
+	}
+
+	.silex-disk-space {
+		width: 100%;
+	}
+}

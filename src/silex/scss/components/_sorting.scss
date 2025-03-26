@@ -1,0 +1,38 @@
+@use '../variables' as vars;
+
+.silex-sort-container {
+	display: flex;
+	align-items: center;
+	padding: vars.$spacing-md;
+	margin-bottom: vars.$spacing-md;
+	border-bottom: 1px solid vars.$drive-border;
+}
+
+.silex-sort-label {
+	margin-right: vars.$spacing-md;
+	font-size: vars.$font-size-sm;
+	color: vars.$drive-text-secondary;
+}
+
+.silex-sort-select {
+	padding: vars.$spacing-xs vars.$spacing-md;
+	border: 1px solid vars.$drive-border;
+	border-radius: vars.$border-radius-sm;
+	background-color: vars.$drive-bg-primary;
+	font-size: vars.$font-size-sm;
+	color: vars.$drive-text-primary;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+		border-color: vars.$drive-blue;
+	}
+}
+
+.silex-folders-first {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	font-size: vars.$font-size-sm;
+	color: vars.$drive-text-secondary;
+}

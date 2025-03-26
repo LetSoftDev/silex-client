@@ -1,0 +1,119 @@
+@use '../variables' as vars;
+@use 'sass:color';
+
+.silex-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 16px;
+	border: 1px solid vars.$drive-border;
+	border-radius: 4px;
+	background-color: vars.$drive-bg-primary;
+	color: vars.$drive-text-primary;
+	font-size: vars.$font-size-sm;
+	font-weight: vars.$font-weight-medium;
+	cursor: pointer;
+	transition: all 0.2s;
+	white-space: nowrap;
+
+	.silex-icon {
+		margin-right: vars.$spacing-xs;
+		font-size: 18px;
+	}
+
+	&:hover {
+		background-color: vars.$drive-bg-secondary;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+	}
+
+	&:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+
+	&-primary {
+		background-color: vars.$drive-blue;
+		color: white;
+		border-color: vars.$drive-blue;
+
+		&:hover {
+			background-color: color.adjust(vars.$drive-blue, $lightness: -5%);
+		}
+	}
+
+	&-secondary {
+		background-color: transparent;
+
+		&:hover {
+			background-color: vars.$drive-bg-secondary;
+		}
+	}
+}
+
+.silex-view-toggle {
+	display: flex;
+	border: 1px solid vars.$drive-border;
+	border-radius: 4px;
+	overflow: hidden;
+
+	.silex-view-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border: none;
+		background-color: vars.$drive-bg-primary;
+		color: vars.$drive-text-secondary;
+		cursor: pointer;
+
+		&:hover {
+			background-color: vars.$drive-bg-secondary;
+		}
+
+		&.active {
+			background-color: vars.$drive-item-selected;
+			color: vars.$drive-blue;
+		}
+	}
+}
+
+.silex-action-btn {
+	width: 32px;
+	height: 32px;
+	border: none;
+	border-radius: vars.$border-radius-circle;
+	background: none;
+	color: vars.$drive-text-secondary;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s;
+
+	&:hover {
+		background-color: vars.$drive-item-hover;
+		color: vars.$drive-text-primary;
+	}
+}
+
+.silex-sort-order {
+	border: 1px solid vars.$drive-border;
+	border-radius: vars.$border-radius-sm;
+	background-color: vars.$drive-bg-primary;
+	color: vars.$drive-text-primary;
+	cursor: pointer;
+	padding: vars.$spacing-xs;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: vars.$spacing-md;
+
+	&:hover {
+		background-color: vars.$drive-bg-secondary;
+	}
+}

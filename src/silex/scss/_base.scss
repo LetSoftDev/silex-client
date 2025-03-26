@@ -1,0 +1,41 @@
+@use 'variables' as vars;
+
+// Базовые стили для файлового менеджера
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+// Сбрасываем стили для компонентов
+.silex-container {
+	// Сбрасываем внешние стили
+	font-family: vars.$drive-font;
+	color: vars.$drive-text-primary;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+
+	// Кнопки
+	button {
+		border: none;
+		background: none;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: inherit;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	// Поля ввода
+	input {
+		font-family: inherit;
+		font-size: inherit;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

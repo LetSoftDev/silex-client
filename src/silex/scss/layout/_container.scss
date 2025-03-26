@@ -1,0 +1,49 @@
+@use '../variables' as vars;
+
+.silex-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: vars.$drive-bg-primary;
+	border-radius: vars.$drive-radius;
+	overflow: hidden;
+	font-family: vars.$drive-font;
+	color: vars.$drive-text-primary;
+	position: relative;
+}
+
+.silex-content {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+	position: relative;
+}
+
+.silex-files-container {
+	flex: 1;
+	overflow-y: auto;
+	position: relative;
+	padding: vars.$spacing-lg;
+}
+
+.silex-footer {
+	padding: vars.$spacing-md vars.$spacing-lg;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: vars.$drive-bg-primary;
+	border-top: 1px solid vars.$drive-border;
+	color: vars.$drive-text-secondary;
+	font-size: vars.$font-size-sm;
+}
+
+.silex-section-header {
+	padding: vars.$spacing-md vars.$spacing-lg;
+	border-bottom: 1px solid vars.$drive-border;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: vars.$font-size-lg;
+	font-weight: vars.$font-weight-medium;
+}

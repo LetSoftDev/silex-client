@@ -1,5 +1,5 @@
 import './scss/demo.scss'
-import { open, FileItem } from './flmngr'
+import { open, FileItem } from './'
 
 document.addEventListener('DOMContentLoaded', () => {
 	// Настраиваем содержимое страницы
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			open({
 				maxFiles: 3, // Можно выбрать до 3 файлов
 				allowedTypes: ['image', 'document'], // Разрешаем только изображения и документы
-				onFinish: files => {
+				onFinish: (files: FileItem[]) => {
 					console.log('Файлы выбраны:', files)
 					displaySelectedFiles(files)
 				},
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			container: '#embedded-manager',
 			initialPath: '/',
 			maxFiles: 5,
-			onFinish: files => {
+			onFinish: (files: FileItem[]) => {
 				displaySelectedFiles(files)
 			},
 		})
